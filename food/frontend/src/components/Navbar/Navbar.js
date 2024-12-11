@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import AuthOverlay from '../AuthOverlay/AuthOverlay';
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     const location = useLocation();
+    const [isAuthOverlayOpen, setIsAuthOverlayOpen] = useState(false);
 
     const NavLink = ({ to, children }) => {
         const isActive = location.pathname === to;
@@ -47,6 +49,30 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                         <NavLink to="/impact">Impact</NavLink>
                         <NavLink to="/causes">Causes</NavLink>
                         <NavLink to="/what-you-can-do">What You Can Do</NavLink>
+
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="relative inline-flex items-center px-3 py-1 
+                            bg-yellow-400 dark:bg-yellow-500 rounded-lg text-green-800 
+                            dark:text-green-900 font-semibold hover:bg-yellow-300 
+                            dark:hover:bg-yellow-400 transition-all duration-300"
+                            onClick={() => setIsAuthOverlayOpen(true)}
+                        >
+                            Dashboard
+                            <motion.div
+                                className="absolute -right-1 -top-1 w-2 h-2 bg-green-500 rounded-full"
+                                animate={{
+                                    scale: [1, 1.2, 1],
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    repeatType: "reverse"
+                                }}
+                            />
+                        </motion.button>
+
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
@@ -58,6 +84,11 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     </div>
                 </div>
             </div>
+
+            <AuthOverlay
+                isOpen={isAuthOverlayOpen}
+                onClose={() => setIsAuthOverlayOpen(false)}
+            />
         </nav>
     );
 };

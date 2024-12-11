@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Impact from './pages/Impact/Impact';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Causes from './pages/Causes/Causes';
 import WhatYouCanDo from './pages/WhatYouCanDo/WhatYouCanDo';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -24,6 +25,7 @@ function App() {
               <Route path="/impact" element={<Impact />} />
               <Route path="/causes" element={<Causes />} />
               <Route path="/what-you-can-do" element={<WhatYouCanDo />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </AnimatePresence>
         </div>
