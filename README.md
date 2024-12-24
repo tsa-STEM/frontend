@@ -1,5 +1,14 @@
 # tsa
 how to run --
-cd frontend -->
-npm i -->
+
+
+
+```
+cd frontend
+```
+```
+npm i 
+```
+```
 npm start 
+```
